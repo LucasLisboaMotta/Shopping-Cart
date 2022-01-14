@@ -19,8 +19,6 @@ describe('1 - Teste a função fecthProducts', () => {
     await fetchProducts('computador');
     expect(fetch).toHaveBeenCalledWith(url)    
   });
-  
-  // Teste se o retorno da função fetchProducts com o argumento "computador" é uma estrutura de dados igual ao objeto computadorSearch, que já está importado no arquivo.
 
   it('Verifica se o objeto de retorno da função fetchProducts esta correto', async () => {
     const objectFetchProducts = await fetchProducts('computador');
@@ -28,7 +26,7 @@ describe('1 - Teste a função fecthProducts', () => {
   });
 
   it('Verifica se é disparado um erro com a frase "Requisição invalida" ao chamar a função fetchProducts sem argumentos', async () => {
-    expect(async () => await fetchProducts()).toThrow(/^Requisição invalida$/)
+    expect(async () => await fetchProducts()).toThrow(/^You must provide an url$/)
   });
 
 });
