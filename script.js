@@ -1,10 +1,23 @@
 const items = document.querySelector('.items');
 const cartItems = document.querySelector('.cart__items');
+const totalPrice = document.querySelector('.total-price');
+
+const sumPrice = () => {
+  const prices = cartItems.children;
+  let total = 0;
+  for (let i = 0; i < prices.length; i += 1) {
+    const string = prices[i].innerText.split(' $')[1];
+    total += Number(string);
+  }
+  total = Number(total.toFixed(2));
+  totalPrice.innerText = total;
+};
 
 const saveCart = () => saveCartItems(JSON.stringify(cartItems.innerHTML));
 
 const cartItemClickListener = ({ target }) => {
   cartItems.removeChild(target);
+  sumPrice();
   saveCart();
 };
 
@@ -21,6 +34,7 @@ const eventOnClick = async ({ target }) => {
   const { id, title, price } = await fetchItem(targetId);
   const element = createCartItemElement(id, title, price);
   cartItems.appendChild(element);
+  sumPrice();
   saveCart();
 };
 
@@ -64,5 +78,6 @@ window.onload = async () => {
     for (let i = 0; i < cartItems.children.length; i += 1) {
       cartItems.children[i].addEventListener('click', cartItemClickListener);
     }
+    sumPrice();
   }
 };
