@@ -8,7 +8,7 @@ describe('3 - Teste a função saveCartItems', () => {
   const item = document.createElement('ol')
   item.innerHTML = '<li>Item</li>';
 
-  it('Verifica se ao usar a função saveCartItems, é utilizado o localStorage.Item()', () => {
+  it('Verifica se ao usar a função saveCartItems, é utilizado o localStorage.setItem()', () => {
     saveCartItems(item);
     expect(localStorage.setItem).toHaveBeenCalled()
   });
