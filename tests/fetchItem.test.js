@@ -15,7 +15,7 @@ describe('2 - Teste a função fecthItem', () => {
   });
 
   it('Verifica se o fetch da função fetchItem utiliza a url correta', async () => {
-    const url = 'ttps://api.mercadolibre.com/items/MLB1615760527'
+    const url = 'https://api.mercadolibre.com/items/MLB1615760527'
     await fetchItem('MLB1615760527');
     expect(fetch).toHaveBeenCalledWith(url)    
   });
