@@ -1,8 +1,8 @@
 const items = document.querySelector('.items');
 const cartItems = document.querySelector('.cart__items');
 
-function cartItemClickListener(event) {
-  // coloque seu código aqui
+function cartItemClickListener({ target }) {
+  cartItems.removeChild(target);
 }
 
 function createCartItemElement(sku, name, salePrice) {
