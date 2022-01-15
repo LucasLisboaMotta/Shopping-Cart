@@ -1,6 +1,8 @@
 const items = document.querySelector('.items');
 const cartItems = document.querySelector('.cart__items');
 const totalPrice = document.querySelector('.total-price');
+const emptyBnt = document.querySelector('.empty-cart');
+
 
 const sumPrice = () => {
   const prices = cartItems.children;
@@ -56,14 +58,21 @@ function createCustomElement(element, className, innerText) {
 function createProductItemElement(sku, name, image) {
   const section = document.createElement('section');
   section.className = 'item';
-
+  
   section.appendChild(createProductImageElement(image));
   section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createCustomElement('span', 'item__sku', sku));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
-
+  
   return section;
 }
+
+const emptyCart = () => {
+  cartItems.innerHTML = '';
+  saveCart();
+};
+
+emptyBnt.addEventListener('click', emptyCart);
 
 window.onload = async () => { 
   const { results } = await fetchProducts('computador');
