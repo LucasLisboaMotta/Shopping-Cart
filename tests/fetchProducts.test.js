@@ -11,7 +11,7 @@ describe('1 - Teste a função fecthProducts', () => {
 
   it('Verifica se a função fetchProducts chamada com o argumento "computador" execulta um fetch', async () => {
     await fetchProducts('computador');
-    expect(fetch).toHaveBeenCalled()    
+    expect(fetch).toHaveBeenCalled()
   });
 
   it('Verifica se o fetch da função fetchProducts utiliza a url correta', async () => {
@@ -26,7 +26,8 @@ describe('1 - Teste a função fecthProducts', () => {
   });
 
   it('Verifica se é disparado um erro com a frase "Requisição invalida" ao chamar a função fetchProducts sem argumentos', async () => {
-    expect(async () => await fetchProducts()).toThrow(/^You must provide an url$/)
+    const errorFetchProducts = await fetchProducts();
+    expect(errorFetchProducts).toEqual(new Error('You must provide an url'));
   });
 
 });

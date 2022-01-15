@@ -21,12 +21,13 @@ describe('2 - Teste a função fecthItem', () => {
   });
 
   it('Verifica se o objeto de retorno da função fetchItem esta correto', async () => {
-    const objectFetchProducts = await fetchItem('MLB1615760527');
-    expect(objectFetchProducts).toEqual(item);
+    const objectFetchItem = await fetchItem('MLB1615760527');
+    expect(objectFetchItem).toEqual(item);
   });
 
-  it('Verifica se é disparado um erro com a frase "Requisição invalida" ao chamar a função fetchItem sem argumentos', async () => {
-    expect(async () => await fetchItem()).toThrow(/^You must provide an url$/)
+  it('Verifica se é disparado um erro com a frase "You must provide an url" ao chamar a função fetchItem sem argumentos', async () => {
+    const errorFetchItem = await fetchItem();
+    expect(errorFetchItem).toEqual(new Error('You must provide an url'))
   });
 
 });
